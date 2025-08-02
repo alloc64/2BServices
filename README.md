@@ -1,7 +1,7 @@
 # 2B Services
 
 
-Set of services to be used in the 2B project supporting Android application development, marketing and deployment.
+Set of services used in the 2B project supporting Android application development, marketing and deployment.
 
 ## Services
 - adbid-api - REST API for bidding management
