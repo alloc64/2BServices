@@ -1,0 +1,58 @@
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+
+.gradle
+mysql
+.angular
+node_modules
+.secrets
+out
+.env
+tmp
+screenshots
+
+/*/src/main/generated
+
+/*/build
+/libs/*/build
+
+/*/client/build/*
+!/*/client/build/generated/
+!/*/client/build/generated/**
+/*/client/build/generated/**/.DS_Store
+

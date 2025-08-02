@@ -1,0 +1,10 @@
+
+include 'core-api:client',
+        ':libs:gcrudLib',
+        'libs:googleOauth2Lib',
+        'libs:googlePlayScraperApi',
+        'libs:jwtSecurityLib',
+        'libs:swaggerizedClientLib',
+        'googleads-api',
+        'googleads-api:client',
+        'shared'

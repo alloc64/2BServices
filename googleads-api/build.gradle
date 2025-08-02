@@ -1,0 +1,72 @@
+plugins {
+    id "java"
+    id "org.springframework.boot" version "3.1.11"
+    id "io.spring.dependency-management" version "1.1.5"
+}
+
+apply plugin: "application"
+apply plugin: "idea"
+
+group = "xyz.xyz"
+version = "0.0.1"
+sourceCompatibility = "17"
+
+springBoot {
+    buildInfo()
+}
+
+tasks.named("test") {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.add("-parameters")
+}
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.boot:spring-boot-starter-validation"
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0"
+
+    implementation "com.google.api-ads:google-ads:31.0.0"
+
+    implementation "com.mysql:mysql-connector-j"
+    implementation 'org.apache.commons:commons-collections4:4.4'
+
+    implementation project(":core-api:client")
+    implementation project(':libs:gcrudLib')
+    implementation project(':libs:googleOauth2Lib')
+    implementation project(":libs:googlePlayScraperApi")
+    implementation project(":libs:jwtSecurityLib")
+    implementation project(":shared")
+
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "io.rest-assured:spring-mock-mvc"
+    testImplementation "com.h2database:h2:2.1.214"
+}
+
+task prepareDockerfileTemplate(type: Copy) {
+    from "../"
+    include "Dockerfile.jdk.tpl"
+    filter { it.replaceAll("<%=name%>", project.name) }
+    filter { it.replaceAll("<%=version%>", project.version) }
+    into "."
+    rename "Dockerfile.jdk.tpl", "Dockerfile"
+}

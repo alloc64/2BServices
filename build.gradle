@@ -1,0 +1,5 @@
+
+ext {
+    lombokVersion = "1.18.24"
+    queryDslVersion = "5.1.0"
+}
